@@ -24,8 +24,6 @@ export default function Add() {
 
     const data = new FormData(event.currentTarget);
 
-    console.log(data.get('image'));
-
     axios.post('http://127.0.0.1:5000/', data)
     .then(function (response) {
       console.log(response);
@@ -50,13 +48,16 @@ export default function Add() {
           <Avatar sx={{ m: 1, bgcolor: 'blue' }}>
             <AddIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
-            Ajoutez un article
-          </Typography>
           <Box component="form" method="POST" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            <br />
+            
+            <TextField fullWidth id="outlined-basic" name="title" label="Titre de l'article*" variant="outlined" margin="dense" />
+            <TextField fullWidth id="outlined-basic" name="link" label="Lien de l'article*" variant="outlined" margin="dense" />
+            <TextField fullWidth id="outlined-basic" name="price" label="Prix de l'article*" variant="outlined" margin="dense" />
+
+
             <input type="file" name="image" id="file" required class="inputfile" />
-            <label for="file">Choisir un fichier</label>
+            <label for="file">Image de l'article</label>
+            
 
             <Button
               type="submit"
@@ -64,7 +65,7 @@ export default function Add() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Ajoutez
+              Ajouter l'article
             </Button>
           </Box>
         </Box>
